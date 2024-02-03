@@ -1,0 +1,63 @@
+/* chartMaker.css */
+
+/* Set the background color of the chart container to white */
+.chartmain {
+    background-color: #fff;
+    border-radius: 10px;
+    min-width: 450px;
+  }
+  
+  /* Customize the appearance of the chart's tooltips */
+  .chartjs-tooltip {
+    background: rgba(0, 0, 0, 0.7);
+    border: 1px solid #fff;
+    color: #fff;
+    border-radius: 5px;
+    padding: 5px;
+    font-family: Arial, sans-serif;
+  }
+  
+  /* Style the axis labels */
+  .chartjs-y-axis,
+  .chartjs-x-axis {
+    font-weight: bold;
+    color: #333; /* Adjust axis label color */
+  }
+  
+  /* Style the bars in the bar chart */
+  .chartjs-bar {
+    background-color: rgba(75, 192, 192, 0.7); /* Adjust bar color */
+    border-color: rgba(75, 192, 192, 1); /* Adjust bar border color */
+    border-width: 2px;
+  }
+  
+  /* Customize the legend */
+  .chartjs-legend {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    margin-top: 10px;
+    list-style: none;
+  }
+  
+  .chartjs-legend-item {
+    display: flex;
+    align-items: center;
+    margin-right: 20px;
+  }
+  
+  .chartjs-legend-rect {
+    width: 16px;
+    height: 16px;
+    margin-right: 5px;
+    border: 2px solid rgba(75, 192, 192, 1); /* Match bar border color */
+    background-color: rgba(75, 192, 192, 0.7); /* Match bar color */
+  }
+  
+  /* Style the legend text */
+  .chartjs-legend-text {
+    font-weight: bold;
+    color: #333; /* Adjust legend text color */
+  }
+  

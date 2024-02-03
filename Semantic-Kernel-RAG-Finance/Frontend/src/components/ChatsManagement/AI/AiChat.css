@@ -1,0 +1,96 @@
+.text-message{
+    color: var(--grey-950, #262626);
+    font-family: Segoe UI;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+}
+.text-message{
+text-align: left;
+}
+.reportText{
+    text-align: left;
+}
+/* loading container */
+.loading-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100px;
+  height: 20px;
+  overflow: hidden;
+  background-color: #F6F6F6; /* Background color for better visibility */
+  border-radius: 4px; /* Rounded corners for the container */
+}
+
+.loading-dot {
+  margin-right: 2px;
+  width: 8px;
+  height: 8px;
+  background-color: #000;
+  border-radius: 50%;
+  animation: moveDot 2s ease-in-out infinite; /* Use ease-in-out for a smoother animation */
+}
+.loading-dot.second {
+  animation-delay: 2s; /* Delay the animation of the second dot by 1 second */
+}
+.loading-dot.thrid {
+  animation-delay: 4s; /* Delay the animation of the second dot by 1 second */
+}
+
+@keyframes moveDot {
+  0% {
+    transform: translateY(-50%);
+  }
+  25% {
+    transform: translateY(0);
+    opacity: 0.8; /* Fade in at 25% */
+  }
+  50% {
+    transform: translateY(50%);
+    opacity: 0.6; /* Fade out at 50% */
+  }
+  75% {
+    transform: translateY(0);
+    opacity: 0.4; /* Fade in at 75% */
+  }
+  100% {
+    transform: translateY(-50%);
+    opacity: 0;
+  }
+}
+.GraphicalRepresentation{
+  background-color: white;
+  padding: 5px;
+  border-radius: 25px;
+}
+.TabularData{
+  background-color: white;
+  padding: 5px;
+  border-radius: 25px;
+}
+.Text-Head-AI{
+  padding-left: 10px;
+  font-size: 20px;
+  font-weight: bolder;
+  font-family: 'Segoe UI';
+  color:#404040;
+}
+.chart-ai{
+  padding-left: 20px;
+}
+.reportText{
+  
+  margin-left: 18px;
+}
+.Report-start-text{
+  align-content:start;
+  margin-top: -.5px;
+
+  font-size: 16px;
+  font-family: 'Segoe UI';
+}
+
+
+  

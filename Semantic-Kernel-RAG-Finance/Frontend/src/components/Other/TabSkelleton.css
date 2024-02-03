@@ -1,0 +1,59 @@
+/* CSS for the MUI-style skeleton loader */
+.skeleton-loader {
+  display: inline-block;
+  width: 80%;
+  height: 40vh;
+  max-width: 300px; /* Adjust the width as needed */
+  background-color: transparent; /* Transparent background */
+  border-radius: 4px; /* Rounded corners */
+  overflow: hidden; /* Hide overflowing content */
+  position: relative; /* Needed for absolute positioning of lines */
+  display: grid; /* Use grid layout for spacing */
+  grid-template-columns: repeat(1, 1fr); /* Adjust the number of columns as needed */
+  gap: 8%; /* Changed to percentage for relative gap */
+}
+
+.skeleton-line {
+  border-radius: 4px; /* Rounded corners */
+  margin: 2% 0; /* Changed to percentage for relative margin */
+  width: 80%; /* Changed to percentage for relative width */
+  height: 3vh; /* Changed to viewport units for height */
+  background-color: #e0e0e0; /* Light grey background color for lines */
+  position: relative;
+  animation: loading 2s infinite linear;
+}
+
+.skeleton-line:nth-child(even) {
+  background-color: #f0f0f0; /* Slightly lighter grey background color for alternate lines */
+  width: 90%; /* Changed to percentage for relative width */
+}
+
+.skeleton-line:nth-child(even)::before {
+  content: '';
+  width: 100%;
+  height: 3vh; /* Changed to viewport units for height */
+  background: linear-gradient(90deg, transparent 30%, rgba(255, 255, 255, 0.6) 50%, transparent 70%);
+  background-size: 200% 100%;
+  animation: loading 4s infinite;
+  position: absolute;
+}
+
+.skeleton-line::before {
+  content: '';
+  width: 100%;
+  height: 3vh; /* Changed to viewport units for height */
+  background: linear-gradient(90deg, transparent 30%, rgba(189, 189, 189, 0.6) 50%, transparent 70%);
+  background-size: 200% 100%;
+  animation: loading 4s infinite;
+  position: absolute;
+}
+
+/* Keyframes animation for the skeleton loader */
+@keyframes loading {
+  0% {
+    background-position: 200% 0;
+  }
+  100% {
+    background-position: -200% 0;
+  }
+}

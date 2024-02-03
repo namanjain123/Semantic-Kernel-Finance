@@ -1,0 +1,7 @@
+{ 
+    "userid": "1","chatid": 1,"isActive": 0,
+    "chat": [
+        {"user": null,"ai":{"data": null,"message": "Please Enter the data","report": null}}
+        ,{"user": "hello","ai":{"data": "null","message": "null","report": "null"}}
+        ]
+    }
