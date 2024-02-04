@@ -7,7 +7,7 @@ const mapStateToProps = (state) => ({
   selectedId: state.selectedId,
 });
 
-const MessagingBar = ({ onMessageSend, selectedId }) => {
+const MessagingBar = ({ onMessageSend }) => {
   const [message, setMessage] = useState('');
 
   // Function to handle changes in the message input field
@@ -18,7 +18,7 @@ const MessagingBar = ({ onMessageSend, selectedId }) => {
   // Function to handle sending a message
   const handleSendMessage = () => {
     if (message.trim() !== '') {
-      onMessageSend(message,selectedId.id);
+      onMessageSend(message);
       setMessage('');
     }
   };

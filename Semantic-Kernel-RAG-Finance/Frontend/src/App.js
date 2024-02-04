@@ -1,19 +1,22 @@
-import React, { useRef } from 'react';
-import LeftTab from './components/tabmodule'
-import ChatWindow from './components/chatwindow'
-import './App.css';
+import React from 'react';
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+import { Provider } from 'react-redux';
+import store from './redux/store';
+import Login from './components/';
+import ChatWindow from './components/filewindow';
 
 function App() {
-  const leftTabRef = useRef();
-  const refreshLeftTab = () => {
-    // Set the tabRefreshed state to trigger a re-render of the LeftTab component.
-    leftTabRef.current.refreshTab();
-  };
   return (
-    <div className="App">
-      <LeftTab/>
-      <ChatWindow />
-    </div>
+    <Provider store={store}>
+      <Router>
+        <div className="App">
+          <Switch>
+            <Route path="/login" component={Login} />
+            <Route path="/chat" component={ChatWindow} />
+          </Switch>
+        </div>
+      </Router>
+    </Provider>
   );
 }
 export default App;
