@@ -6,9 +6,9 @@ import "./chatwindow.css";
 import axios from "axios";
 import TabSkeleton from "./Other/TabSkeleton";
 import { connect, useSelector } from "react-redux";
-import { useHistory } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 const MainContent = ({ selectedId }) => {
-  const history=useHistory();
+  const navigate=useNavigate();
   const chatContainerRef = useRef(null);
   const [loading, setLoadingState] = useState(false);
   const [content, setContent] = useState(null);
@@ -65,7 +65,7 @@ const MainContent = ({ selectedId }) => {
   useEffect(() => {
     // Mock initial data
     if(selectedId==null){
-      history.go('/login');
+      navigate('/login');
     }
     const initialData = [
       { user: "null", ai: { data: "null", message: "null", report: "null" } },

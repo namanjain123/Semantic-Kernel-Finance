@@ -1,0 +1,72 @@
+body {
+  margin: 0;
+  font-family: 'Arial', sans-serif;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  background: #232323;
+}
+
+.file-upload-container {
+  width: 100%;
+  max-width: 400px;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+  background: #363636;
+  color: #fff;
+}
+
+.form-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+h2 {
+  color: #fff;
+}
+
+label {
+  margin-top: 10px;
+  width: 100%;
+  color: #fff;
+}
+
+input {
+  padding: 10px;
+  border: 1px solid #555;
+  border-radius: 6px;
+  width: 100%;
+  box-sizing: border-box;
+  margin-top: 5px;
+  color: #555;
+  background: #fff;
+}
+
+.file-label {
+  display: block;
+  margin-top: 10px;
+}
+
+button {
+  background: #3f51b5;
+  color: #fff;
+  padding: 12px 20px;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  margin-top: 20px;
+  box-shadow: 0 4px 8px rgba(63, 81, 181, 0.5);
+}
+
+button:disabled {
+  background-color: #888;
+  cursor: not-allowed;
+}
+
+/* Hover effect for button */
+button:hover {
+  background: #303f9f;
+}

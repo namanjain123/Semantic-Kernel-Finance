@@ -1,0 +1,23 @@
+.loading-rabbit-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+.loading-rabbit {
+  width: 50px;
+  height: 30px;
+  background: url('../../../public/Rabbit.gif') no-repeat;
+  background-size: cover;
+  animation: rabbitRun 1s steps(6) infinite;
+}
+
+@keyframes rabbitRun {
+  from {
+    background-position: 0;
+  }
+  to {
+    background-position: -300px;
+  }
+}
