@@ -14,7 +14,36 @@ const MainContent = ({ selectedId }) => {
   const [content, setContent] = useState(null);
   const [intialScreen, setInitialScreen] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
+  const [aichatmessage, setAiChat] = useState(null);
 
+  const handleChatRequest = async (userchat) => {
+    try {
+      const apiUrl = 'http://0.0.0.0:5000/api/chat';
+      const requestData = {
+        chatId: '6abdc',
+        collectionName: selectedId,
+        userQuery: userchat,
+      };
+
+      const response = await fetch(apiUrl, {
+        method: 'POST',
+        headers: {
+          'Accept': '*/*',
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(requestData),
+      });
+
+      if (!response.ok) {
+        throw new Error('Network response was not ok');
+      }
+
+      const result = await response.json();
+      setAiChat(result);
+    } catch (error) {
+      console.error('Error fetching chat data:', error);
+    }
+  };
   const scrollToBottom = () => {
     const chatContainer = chatContainerRef.current;
     if (chatContainer) {
@@ -43,16 +72,20 @@ const MainContent = ({ selectedId }) => {
        }
     }
   };
-  const onMessageSend = (message) => {
+  const onMessageSend = async (message) => {
     console.log(message)
     setInitialScreen(false);
     startLoading();
     // Update content locally need to be using the API Call
+    await handleChatRequest(message);
+    if(aichatmessage==null){
+      throw new Error('Network response was not ok');
+    }
     const newListObject = {
       user: message,
       ai: {
         data: "null",
-        message: "null",
+        message: aichatmessage,
         report: "null",
       },
     };

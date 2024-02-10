@@ -11,6 +11,7 @@ const FileUpload = ({ setSelectedId }) => {
 
   const [file, setFile] = useState(null);
   const [fieldName, setFieldName] = useState('');
+  const[token,setToken]=useState(null);
   const [isFormValid, setIsFormValid] = useState(false);
   const [loading, setLoading] = useState(false);
 
@@ -25,6 +26,20 @@ const FileUpload = ({ setSelectedId }) => {
     setFieldName(inputFieldName);
     setIsFormValid(inputFieldName && file);
   };
+  const fetchToken = async () => {
+      try {
+        const response = await fetch('http://localhost:5000/antiforgery/token');
+        
+        if (!response.ok) {
+          throw new Error('Network response was not ok');
+        }
+
+        const result = await response.json();
+        setToken(result);
+      } catch (error) {
+        console.error('Error fetching data:', error);
+      }
+    };
   const handleFileSubmit = async () => {
     try {
       // Check if file and field name are present before submitting
@@ -32,23 +47,26 @@ const FileUpload = ({ setSelectedId }) => {
         console.error('Please select a file and enter a field name.');
         return;
       }
-
       setLoading(true); // Set loading to true while waiting for the response
-
+      //Call for the Forgery token
+      await fetchToken();
       // Call your file processing API here
       const formData = new FormData();
       formData.append('file', file);
-      formData.append('fieldName', fieldName);
-
-      const response = await fetch('your-file-api-endpoint', {
-        method: 'POST',
-        body: formData,
-      });
-
-      const data = await response.json();
-
-      // Dispatch action to update Redux store
-      dispatch(setSelectedId(data));
+      const requestOptions = {
+          method: 'POST',
+          headers: {
+            'X-XSRF-TOKEN': token,
+          },
+          body: formData,
+        };
+      const response = await fetch(`http://localhost:5000/api/summarization/file?collection=${fieldName}`, requestOptions);
+      
+      if (!response.ok) {
+          throw new Error('Network response was not ok');
+      }
+      // Dispatch action to update Redux store for the collection name
+      dispatch(setSelectedId(fieldName));
 
       // Redirect to ChatWindow upon successful file processing
       history('/chat');
