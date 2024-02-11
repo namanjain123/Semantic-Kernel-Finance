@@ -18,7 +18,7 @@ const MainContent = ({ selectedId }) => {
 
   const handleChatRequest = async (userchat) => {
     try {
-      const apiUrl = 'http://0.0.0.0:5000/api/chat';
+      const apiUrl = 'http://localhost:3255/api/chat';
       const requestData = {
         chatId: '6abdc',
         collectionName: selectedId,
