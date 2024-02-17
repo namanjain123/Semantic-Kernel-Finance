@@ -20,7 +20,7 @@ public static class BaseConverter
             fileInput.name)
         {
             Headers = new HeaderDictionary(),
-            ContentType = fileInput.Type
+            ContentType = fileInput.type
         }).ToList();
         var result=new FormFileCollection();
         result.AddRange(formFiles);

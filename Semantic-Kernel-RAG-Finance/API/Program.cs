@@ -12,19 +12,20 @@ using Buisness_Logic;
 using Services.Services;
 using Services.IServices;
 using API.utils;
+var MyAllowSpecificOrigins = "_myAllowSpecificOrigins";
 var builder = WebApplication.CreateBuilder(args);
 // Add Services.
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddCors(options =>
 {
-    options.AddDefaultPolicy(builder =>
-    {
-        builder.WithOrigins("http://localhost:3000") // Allow React APP
-               .AllowAnyHeader()
-               .AllowAnyMethod();
-    });
+    options.AddPolicy(name: "_myAllowSpecificOrigins",
+                      builder =>
+                      {
+                          builder.AllowAnyOrigin()
+                                 .AllowAnyHeader()
+                                 .AllowAnyMethod();
+                      });
 });
-
 builder.Services.AddSwaggerGen();
 builder.Services.AddAntiforgery(options => options.HeaderName = "X-XSRF-TOKEN");
 builder.Services.AddAuthentication();
@@ -53,7 +54,7 @@ if (app.Environment.IsDevelopment())
     app.UseSwagger();
     app.UseSwaggerUI();
 }
-app.UseCors();
+app.UseCors(MyAllowSpecificOrigins);
 app.UseHttpsRedirection();
 app.UseAntiforgery();
 app.UseAuthentication();

@@ -31,12 +31,14 @@ const FileUpload = ({ setSelectedId }) => {
   };
   const fetchToken = async () => {
       try {
-        const response = await fetch('http://localhost:3255/antiforgery/token');
+          const response = await fetch('http://localhost:3255/antiforgery/token');
         if (!response.ok) {
-          console.log(response)
+            console.log(response);
           toast.error('Backend Error Please try after check');
         }
-        const result =  await response.text(); 
+          const result = await response.text(); 
+
+          console.log(result);
         setToken(result);
       } catch (error) {
         console.error('Error fetching data:', error);
@@ -55,9 +57,7 @@ const FileUpload = ({ setSelectedId }) => {
       //Call for the Forgery token
       await fetchToken();
       // Call your file processing API here
-      const requestData = {
-      files: [],
-    };
+        const requestData = [];
 
       const readFileAsBase64 = (file) => {
       return new Promise((resolve, reject) => {
@@ -70,7 +70,7 @@ const FileUpload = ({ setSelectedId }) => {
 
     for (const file of files) {
       const base64Content = await readFileAsBase64(file);
-      requestData.files.push({
+      requestData.push({
         name: file.name,
         type: file.type,
         content: base64Content,
@@ -79,7 +79,8 @@ const FileUpload = ({ setSelectedId }) => {
       const requestOptions = {
           method: 'POST',
           headers: {
-            'X-XSRF-TOKEN': token,
+              'X-XSRF-TOKEN': token,
+              'Content-Type': 'application/json',
           },
           body: JSON.stringify(requestData)
         };
