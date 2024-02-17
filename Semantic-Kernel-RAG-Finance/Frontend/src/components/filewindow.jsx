@@ -83,10 +83,10 @@ const FileUpload = ({ setSelectedId }) => {
           },
           body: JSON.stringify(requestData)
         };
+        console.log(JSON.stringify(requestData));
         console.log(requestOptions);
       const response = await fetch(`http://localhost:3255/api/summarization/file?collection=${fieldName}`, requestOptions);
       if (!response.ok) {
-        console.log(response);
         toast.error('Backend Error Please try after check');
           throw new Error('Network response was not ok');
       }

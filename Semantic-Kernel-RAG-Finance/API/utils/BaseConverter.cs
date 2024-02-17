@@ -13,11 +13,11 @@ public static class BaseConverter
     public static IFormFileCollection ConvertToFormFileCollection(List<FileInput> fileInputs)
     {
         var formFiles = fileInputs.Select(fileInput => new FormFile(
-            new MemoryStream(Convert.FromBase64String(fileInput.Content)),
+            new MemoryStream(Convert.FromBase64String(fileInput.content)),
             0, // Placeholder for length, as it's not used in your example
-            Convert.FromBase64String(fileInput.Content).Length,
-            fileInput.Name,
-            fileInput.Name)
+            Convert.FromBase64String(fileInput.content).Length,
+            fileInput.name,
+            fileInput.name)
         {
             Headers = new HeaderDictionary(),
             ContentType = fileInput.Type

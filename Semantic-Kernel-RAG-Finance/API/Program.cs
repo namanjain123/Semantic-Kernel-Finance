@@ -12,9 +12,7 @@ using Buisness_Logic;
 using Services.Services;
 using Services.IServices;
 using API.utils;
-
 var builder = WebApplication.CreateBuilder(args);
-
 // Add Services.
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddCors(options =>
@@ -86,7 +84,6 @@ app.MapPost("api/file", async (List<FileInput> files,string collection,DocumentH
         return Results.BadRequest(ex.Message);
     }
 });
-
 //Chatting Endpoint
 app.MapPost("/api/chat", async (ChatInput chatInput, ChatHandler chatHandler) =>
 {
@@ -142,8 +139,3 @@ app.MapPost("api/summarization/file", async (List<FileInput> files, string colle
     }
 });
 app.Run();
-
-
-
-
-
